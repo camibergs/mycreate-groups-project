@@ -26,16 +26,12 @@ function Students() {
 
     // Handlers ---------------------------------
     const addToFavourites = (id) => {
-        const selectedStudent = studentlist.find((student) => student.UserID === id);
-        if (selectedStudent && !favourites.includes(selectedStudent)) {
-            setFavourites([...favourites, selectedStudent]);
             alert("Student has been added to Favourites");
-        }
     };
 
 
     // View -------------------------------------
-return (
+    return (
     <>
     <h1>Students in your course</h1>
         <CardContainer>
