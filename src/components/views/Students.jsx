@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { CardContainer, Card } from '../UI/Card.jsx';
 import './Students.scss';
 
@@ -18,11 +18,22 @@ function Students() {
         { "UserID": 284, "UserFirstname": "Shuja", "UserLastname": "AHMAD", "UserEmail": "K8319360@kingston.ac.uk", "UserRegistered": 0, "UserLevel": 4, "UserYearID": 1, "UserUsertypeID": 2, "UserImageURL": "https://images.generated.photos/vnopGiDivHG6UKp3AgGkY44U3nOfR3lLsWNKdA-KEyQ/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjAzMjQyLmpwZw.jpg", "UserUsertypeName": "Student", "UserYearName": "2022-23" }
       ];
     
+    const loggedInUserGroup = 276;
+    const apiURL = "http://localhost:5000"
+    const myGroupEndpoint = `${apiURL}/api/likes/${loggedInUserGroup}`;
 
     // State ------------------------------------
     const [favourites, setFavourites] = useState(null);  
 
-    
+    const apiGet = async (endpoint) => {
+      const response = await fetch(endpoint);
+      const result = await response.json();
+      setFavourites(result);
+    };
+
+    useEffect(() => {
+      apiGet(myGroupEndpoint);
+    }, [myGroupEndpoint]);
 
     // Handlers ---------------------------------
     const addToFavourites = (id) => {

@@ -87,6 +87,9 @@ function Modules() {
           ModuleImageURL: "https://images.freeimages.com/images/small-previews/402/rocket-in-the-museum-1450195.jpg"
         }
       ];
+    // Initialisation ------------------------------
+    // State ---------------------------------------
+    // Handlers ------------------------------------
 
     // View -------------------------------------  
     return (    
