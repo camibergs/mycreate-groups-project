@@ -1,0 +1,65 @@
+// -----------------------------------------------
+// Imports ///////////////////////////////////////
+// -----------------------------------------------
+@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
+
+// -----------------------------------------------
+// Default styling ///////////////////////////////
+// -----------------------------------------------
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+// -----------------------------------------------
+// Colours ///////////////////////////////////////
+// -----------------------------------------------
+
+$Jet: #161616; // #323232;
+$Charcoal: lighten($Jet, 15%);
+$Red: #edafb8; // Rose
+$LightRed: lighten($Red, 5%);
+$DarkRed: darken($Red, 20%);
+$Green: #29e7cd; // Cyan
+$DarkGreen: darken($Green, 10%);
+$Blue: #749EE3;  // Little Boy Blue // 7C8DEB Cornflower Blue
+$DarkBlue: darken($Blue, 10%);
+$Yellow: #ffdb58; // Mustard // #ead2ac; Sand
+$DarkYellow: darken($Yellow, 10%);
+$Purple: #632290; // KSU Purple
+$DarkPurple: #230c33;
+
+$ThemeColor: #004180;
+$ThemeColors: (
+  0: $Jet,
+  1: $ThemeColor,
+  2: lighten($ThemeColor, 10%),
+  3: lighten($ThemeColor, 20%),
+  4: lighten($ThemeColor, 30%),
+  5: lighten($ThemeColor, 40%),
+  6: lighten($ThemeColor, 50%),
+  7: lighten($ThemeColor, 57%),
+  8: lighten($ThemeColor, 64%),
+  9: lighten($ThemeColor, 71%),
+  10: lighten($ThemeColor, 78%),
+  11: lighten($ThemeColor, 84%),
+  12: White,
+);
+
+@function GetThemeColor($level) {
+  @return map-get($ThemeColors, $level);
+}
+
+// -----------------------------------------------
+// Layout Colours ////////////////////////////////
+// -----------------------------------------------
+
+$PageBackgroundColor: White;
+$HeaderBackgroundColor: GetThemeColor(2);
+$NavbarBackgroundColor: $Green;
+$NavbarHoverBackgroundColor: lighten($NavbarBackgroundColor, 15%);
+$LayoutBackgroundColor: WhiteSmoke;
+$FooterBackgroundColor: GetThemeColor(3);
