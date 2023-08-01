@@ -4,4 +4,15 @@ header {
 
     h1 { color: white; }
     p.welcome { color: rgb(255, 255, 255); }
+
+    div.navHeaderItem a {
+        color: rgb(36, 36, 40);
+        text-decoration: none;
+        padding: 10px;
+        
+
+        &:hover {
+            color: rgb(255, 255, 255);
+        }
+    }
 }

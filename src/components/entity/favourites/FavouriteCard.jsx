@@ -3,23 +3,61 @@ import './FavouriteCard.scss';
 
 function FavouriteCard({user}) {
   // Initialisation ------------------------------
-
+  const loggedInUser = 277;
+  const likeRecord = { LikerID: loggedInUser };
+  const apiURL = "http://softwarehub.uk/unibase/api"
+  const likeEndpoint = `${apiURL}/users/likes/${loggedInUser}`;
+  
   // State ---------------------------------------
+  const apiPost = async (url, likeRecord) => {
+    const request = {
+      method: "POST",
+      body: JSON.stringify(likeRecord),
+      headers: { "Content-type": "application/json" },
+    };
 
+    const response = await fetch(url, request);
+    const result = await response.json();
+    return response.status >= 200 && response.status < 300
+      ? { isSuccess: true }
+      : { isSuccess: false, message: result.message };
+  };
+  
+  
+  
   // Handlers ------------------------------------
-  const handleLikes = () => {
+  const handleLikes = (student) => {
+    console.log(`You liked ${student.UserID}`);
+    likeRecord.LikeeID = student.UserID;
+    likeRecord.LikeAffinityID = 1;
+    apiPost(likeEndpoint, likeRecord);
   };
 
   const handleDislikes = () => {
+    console.log(`You disliked ${student.UserID}`);
+    likeRecord.LikeeID = student.UserID;
+    likeRecord.LikeAffinityID = 2;
+    apiPost(likeEndpoint, likeRecord)
   };
 
   const handleReset = () => {
+    console.log(`Reset ${student.UserID}`);
+    likeRecord.LikeeID = student.UserID;
+    likeRecord.LikeAffinityID = null;
+    apiPost(likeEndpoint,)
+
   };
   
   // View ----------------------------------------
-  const buttonLike = <button>Like</button>;
-  const buttonDislike = <button>Dislike</button>;
-  const buttonReset = <button>Reset</button>;
+  const buttonLike = (
+    <button onClick={() => handleLikes(user)}>Like</button>
+  );
+  const buttonDislike = (
+    <button onClick={() => handleDislikes(user)}>Dislike</button>
+  );
+  const buttonReset = (
+    <button onClick={() => handleReset(user)}>Reset</button>
+  );
 
   let buttons = null;
   switch (user.UserAffinityID) {

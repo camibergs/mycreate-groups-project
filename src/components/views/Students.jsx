@@ -34,7 +34,6 @@ function Students() {
     // State ------------------------------------
     const [students, setStudents] = useState(null);
   
-
     const apiGet = async (endpoint) => {
       const response = await fetch(endpoint);
       const result = await response.json();

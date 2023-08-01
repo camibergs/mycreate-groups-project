@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import './header.scss';
 
 function Header(props) {
@@ -10,6 +11,9 @@ function Header(props) {
      <header>
         <h1>Creating Groups</h1>
         <p className="welcome">Welcome {props.loggedInUser}</p>
+          <div className='navHeaderItem'>
+            <NavLink to="/lecturerview">Lecturer View</NavLink>
+          </div>
       </header>
     );
 }
