@@ -40,18 +40,18 @@ function LecturerView() {
 
         {showForm && <AssessmentForm onCancel={handleCancel}/>}
 
-          {!assessments ? (
-            <p>Loading records ... </p>
-          ) : assessments.length === 0 ? (
-            <p>No records found</p>
-          ) : (
-          <CardContainer>
-            {assessments.map((assessment) => (
-              <AssessmentCard assessment={assessment} key={assessment.AssessmentID} />
-          ))}
-          </CardContainer>
-        )}
-      </>
+        {!assessments ? (
+          <p>Loading records ... </p>
+        ) : assessments.length === 0 ? (
+          <p>No records found</p>
+        ) : (
+        <CardContainer>
+          {assessments.map((assessment) => (
+            <AssessmentCard assessment={assessment} key={assessment.AssessmentID} />
+        ))}
+        </CardContainer>
+      )}
+    </>
   );
 }
 

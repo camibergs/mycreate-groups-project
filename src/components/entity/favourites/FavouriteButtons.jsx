@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import './FavouriteCard.scss';
+import './FavouriteButtons.scss';
 
-function FavouriteCard({user}) {
+function FavouriteButtons({user}) {
   // Initialisation ------------------------------
   const loggedInUser = 277;
   const likeRecord = { LikerID: loggedInUser };
@@ -73,13 +73,13 @@ function FavouriteCard({user}) {
   }
 
   return (
-    <div className= 'favouriteCard'>
+    <div className= 'favouriteButtons'>
       {buttons}
     </div>
   );
 }
   
-FavouriteCard.propTypes = {
+FavouriteButtons.propTypes = {
   user: PropTypes.shape({
     UserEmail: PropTypes.string.isRequired,
     UserFirstname: PropTypes.string.isRequired,
@@ -89,4 +89,4 @@ FavouriteCard.propTypes = {
   }),
 };
   
-export default FavouriteCard;
+export default FavouriteButtons;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Action from '../UI/Actions.jsx';
 import { CardContainer } from '../UI/Card.jsx';
 import UserCard from '../entity/user/UserCard';
-import FavouriteCard from '../entity/favourites/FavouriteCard.jsx';
+import FavouriteButtons from '../entity/favourites/FavouriteButtons.jsx';
 
 
 function Students() {
@@ -74,7 +74,7 @@ function Students() {
           ) : (
             students.map((student) => 
               <UserCard user={student} key={student.UserID}>
-                <FavouriteCard user={student}/>
+                <FavouriteButtons user={student}/>
               </UserCard>
         ))}
         </CardContainer>
