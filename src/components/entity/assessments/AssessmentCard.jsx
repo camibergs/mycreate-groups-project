@@ -10,7 +10,7 @@ function AssessmentCard({ assessment }) {
   return (
     <div className="assessmentCard">
       <Card>
-        <p>{assessment.AssessmentID}</p>
+      <p>{assessment.AssessmentID}</p>
         <p>{assessment.AssessmentName}</p>
         <p>{assessment.AssessmentPublishdate}</p>
       </Card>

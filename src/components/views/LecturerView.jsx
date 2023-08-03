@@ -47,7 +47,7 @@ function LecturerView() {
         ) : (
         <CardContainer>
           {assessments.map((assessment) => (
-            <AssessmentCard assessment={assessment} key={assessment.AssessmentID} />
+            <AssessmentCard assessment={assessment} key={assessment.AssessmentName} />
         ))}
         </CardContainer>
       )}

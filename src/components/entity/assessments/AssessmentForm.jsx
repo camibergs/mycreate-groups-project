@@ -15,6 +15,28 @@ const initialAssessment = {
 
 function AssessmentForm({ onCancel, onSuccess }) {
   // Initialisation ------------------------------
+  const validation = {
+    isValid: {
+      AssessmentName: (name) => name.length > 15,
+      AssessmentPublishdate: (date) => date.getTime() > (new Date()).getTime(),
+      AssessmentSubmissiondate: (date) => date.getTime() > (new Date()).getTime(),
+      AssessmentFeedbackdate: (date) => date.getTime() > (new Date()).getTime(),
+      AssessmentBriefURL: (text) => text.length > 15,
+      AssessmentModuleID: (id) => id > 0,
+      AssessmentTypeID: (id) => id > 0,
+    },
+    errorMessage: {
+      AssessmentName: "Assessment name is too short",
+      AssessmentPublishdate: "Invalid date",
+      AssessmentSubmissiondate: "Invalid date",
+      AssessmentFeedbackdate: "Invalid date",
+      AssessmentBriefURL: "Invalid URL",
+      AssessmentModuleID: "Invalid Module",
+      AssessmentTypeID: "Invalid Description",
+    }
+
+  };
+
   const conformance = {
     html2js: {
       AssessmentName: (value) => (value === '' ? null : value),
@@ -38,7 +60,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
   const loggedInLecturer = 820;
   const apiURL = 'http://softwarehub.uk/unibase/api';
-  const postAssessmentEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
+  const postAssessmentEndpoint = `${apiURL}/assessments/`;
   const moduleEndpoint = `${apiURL}/modules`;
   const assessmentTypeDescrEndpoint = `${apiURL}/assessments/leader/${loggedInLecturer}`;
   
@@ -46,8 +68,8 @@ function AssessmentForm({ onCancel, onSuccess }) {
  
   // State ---------------------------------------
   const [assessment, setAssessments] = useState(initialAssessment);
-  const [module, setModule] = useState(null);
-  const [assessmentTypeDescr, setAssessmentTypeDescr] = useState(null);
+  const [modules, setModules] = useState();
+  const [assessmentTypeDescr, setAssessmentTypeDescr] = useState();
 
   const apiGet = async (endpoint, setState) => {
     const response = await fetch(endpoint);
@@ -72,7 +94,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
   };
 
   useEffect(() => {
-    apiGet(moduleEndpoint, setModule);
+    apiGet(moduleEndpoint, setModules);
   }, [moduleEndpoint]);
 
   useEffect(() => {
@@ -113,7 +135,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
         <label>
           Assessment Publish Date
           <input
-            type="text"
+            type="date"
             name="AssessmentPublishdate"
             value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)}
             onChange={handleChange}
@@ -133,7 +155,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
         <label>
           Assessment Feedback Date
           <input
-            type="text"
+            type="date"
             name="AssessmentFeedbackdate"
             value={conformance.js2html['AssessmentFeedbackdate'](assessment.AssessmentFeedbackdate)}
             onChange={handleChange}
@@ -158,9 +180,9 @@ function AssessmentForm({ onCancel, onSuccess }) {
             onChange={handleChange}
           >
           <option value="0">None selected</option>
-            {module.map((module) => (
-              <option key={module.ModuleID} value={module.ModuleID}>
-                {module.ModuleName}
+            {modules && modules.map((modules) => (
+              <option key={modules.ModuleID} value={modules.ModuleID}>
+                {modules.ModuleName}
               </option>
             ))}
           </select>
@@ -174,7 +196,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
             onChange={handleChange}
           >
           <option value="0">None selected</option>
-          {assessmentTypeDescr.map((assessmentTypeDescr) => (
+          {assessmentTypeDescr && assessmentTypeDescr.map((assessmentTypeDescr) => (
             <option key={assessmentTypeDescr.AssessmentAssessmentTypeID} value={assessmentTypeDescr.AssessmentAssessmentTypeID}>
               {assessmentTypeDescr.AssessmentAssessmenttypeDescription}
             </option>
