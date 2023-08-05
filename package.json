@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
+    "react-datetime": "^3.2.0",
+    "react-datetime-picker": "^5.5.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
     "sass": "^1.63.6"

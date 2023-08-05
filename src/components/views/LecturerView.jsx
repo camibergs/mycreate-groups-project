@@ -29,6 +29,11 @@ function LecturerView() {
   const handleAdd = () => setShowForm(true);
   const handleCancel = () => setShowForm(false);
 
+  const handleSuccess = () => {
+    setShowForm(false);
+    apiGet(myModulesEndpoint); // Fetch updated data after successful form submission
+  };
+
   // View ----------------------------------------
   return (
     <>
@@ -38,7 +43,7 @@ function LecturerView() {
             {!showForm && <Action.Add showText buttonText="Add New Assessment" onClick={handleAdd} />}
         </Action.Tray>
 
-        {showForm && <AssessmentForm onCancel={handleCancel}/>}
+        {showForm && <AssessmentForm onCancel={handleCancel} onSuccess={handleSuccess}/>}
 
         {!assessments ? (
           <p>Loading records ... </p>
@@ -47,7 +52,7 @@ function LecturerView() {
         ) : (
         <CardContainer>
           {assessments.map((assessment) => (
-            <AssessmentCard assessment={assessment} key={assessment.AssessmentName} />
+            <AssessmentCard assessment={assessment} key={assessment.AssessmentID} />
         ))}
         </CardContainer>
       )}

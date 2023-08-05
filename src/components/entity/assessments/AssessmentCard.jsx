@@ -20,7 +20,7 @@ function AssessmentCard({ assessment }) {
 
 AssessmentCard.propTypes = {
   assessment: PropTypes.shape({
-    AssessmentID: PropTypes.string.isRequired,
+    AssessmentID: PropTypes.number.isRequired,
     AssessmentName: PropTypes.string.isRequired,
     AssessmentPublishdate: PropTypes.string.isRequired,
   }),
