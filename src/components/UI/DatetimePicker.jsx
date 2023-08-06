@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Datetime from 'react-datetime';
-import './DatetimePicker.css';
+import './DatetimePicker.scss';
 
 
 function DatetimePicker() {

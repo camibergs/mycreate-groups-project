@@ -137,7 +137,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
         <label>
           Assessment Publish Date
-          <input
+          <DatetimePicker
               name="AssessmentPublishdate"
               value={conformance.js2html['AssessmentPublishdate'](assessment.AssessmentPublishdate)}
               onChange={handleChange} 
@@ -146,8 +146,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
         <label>
           Assessment Submission Date
-          <input
-            type="date"
+          <DatetimePicker
             name="AssessmentSubmissiondate"
             value={conformance.js2html['AssessmentSubmissiondate'](assessment.AssessmentSubmissiondate)}
             onChange={handleChange}
@@ -156,8 +155,7 @@ function AssessmentForm({ onCancel, onSuccess }) {
 
         <label>
           Assessment Feedback Date
-          <input
-            type="date"
+          <DatetimePicker
             name="AssessmentFeedbackdate"
             value={conformance.js2html['AssessmentFeedbackdate'](assessment.AssessmentFeedbackdate)}
             onChange={handleChange}
