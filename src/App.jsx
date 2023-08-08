@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/layout/Layout.jsx';
+import Login from './components/views/Login.jsx';
 import Homepage from './components/views/Homepage.jsx';
 import Modules from './components/views/Modules.jsx';
 import Students from './components/views/Students.jsx';
@@ -26,7 +27,8 @@ function App() {
       <Layout loggedInUser={loggedInUser}> 
         <Routes>
 
-          <Route path="/" element={<Homepage />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/homepage" element={<Homepage />} />
           <Route path="/modules" element={<Modules />} />
           <Route path="/students" element={<Students />} />
           <Route path="/favourites" element={<Favourites />} />
