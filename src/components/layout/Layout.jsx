@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import Header from './Header.jsx';
-import Navbar from './Navbar.jsx';
+import StudentNavbar from './StudentNavbar.jsx';
 import Footer from './Footer.jsx';
 import './Layout.scss';
 
@@ -12,7 +12,7 @@ function Layout(props) {
   return (
     <div className="layout">
       <Header loggedInUser={props.loggedInUser} />
-      <Navbar />
+      <StudentNavbar />
       <main>{props.children}</main>
       <Footer /> 
     </div>

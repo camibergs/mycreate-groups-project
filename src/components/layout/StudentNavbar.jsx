@@ -1,15 +1,16 @@
 import { NavLink } from "react-router-dom";
-import "./Navbar.scss";
+import "./StudentNavbar.scss";
 
-function Navbar() {
+function StudentNavbar() {
   // Initialisation ------------------------------
   // State ---------------------------------------
   // Handlers ------------------------------------
   // View -------------------------------------
   return (
     <nav> 
+
       <div className='navItem'>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/students">Coursemates</NavLink>
       </div>
 
       <div className='navItem'>
@@ -17,14 +18,16 @@ function Navbar() {
       </div>
 
       <div className='navItem'>
-        <NavLink to="/students">Coursemates</NavLink>
+        <NavLink to="/groupassessments">Group Assessments</NavLink>
       </div>
 
-      <div className='navItem'>
-        <NavLink to="/favourites">Favourites</NavLink>
+      <div className='logOut'>
+        <NavLink to="/">Log out</NavLink>
       </div>
+
+
     </nav>
   );
 }
 
-export default Navbar;
+export default StudentNavbar;

@@ -1,0 +1,30 @@
+nav {
+    padding: 5px;
+    background: rgb(36, 36, 40);
+    display: flex;
+    gap: 10px;
+  
+      div.navItem a {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        padding: 10px;
+  
+        &:hover {
+            color: #5464a0;
+        }
+      }
+  
+      .logOut {
+        margin-left: auto; 
+        a {
+          color: rgb(255, 255, 255);
+          text-decoration: none;
+          padding: 10px;
+  
+          &:hover {
+              color: #5464a0;
+          }
+  
+        }
+      }
+  }

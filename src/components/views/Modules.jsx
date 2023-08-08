@@ -3,6 +3,7 @@ import Action from '../UI/Actions.jsx';
 import ModuleForm from '../entity/module/ModuleForm.jsx';
 import { CardContainer } from '../UI/Card.jsx';
 import ModuleCard from '../entity/module/ModuleCard.jsx';
+import Layout from '../layout/Layout.jsx';
 
 
 
@@ -34,6 +35,7 @@ function Modules() {
     // View -------------------------------------  
     return (    
       <>
+      <Layout>
           <h1>Modules</h1>
 
           <Action.Tray>
@@ -56,6 +58,7 @@ function Modules() {
           ))}
           </CardContainer>
         )}
+      </Layout>
       </>
     );
 }

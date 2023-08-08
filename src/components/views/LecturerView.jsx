@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Action from '../UI/Actions.jsx';
 import { CardContainer } from '../UI/Card.jsx';
-import './LecturerView.scss';
+import Header from '../../components/layout/Header.jsx';
+import LecturerNavbar from '../../components/layout/LecturerNavbar.jsx';
 import AssessmentCard from '../entity/assessments/AssessmentCard.jsx';
 import AssessmentForm from '../entity/assessments/AssessmentForm.jsx';
+import './LecturerView.scss';
 
 function LecturerView() {
   // Initialisation ------------------------------
@@ -37,6 +39,9 @@ function LecturerView() {
   // View ----------------------------------------
   return (
     <>
+    <Header />
+      <LecturerNavbar />
+      <div className='lecturerPage'>
       <h1>List of assessments:</h1>
 
          <Action.Tray>
@@ -56,6 +61,7 @@ function LecturerView() {
         ))}
         </CardContainer>
       )}
+      </div>
     </>
   );
 }

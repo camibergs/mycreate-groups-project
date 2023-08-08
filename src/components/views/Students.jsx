@@ -1,8 +1,12 @@
 import { useState, useEffect } from 'react';
+import Layout from '../../components/layout/Layout.jsx';
+import Header from '../../components/layout/Header.jsx';
+import StudentNavbar from '../../components/layout/StudentNavbar.jsx';
 import Action from '../UI/Actions.jsx';
 import { CardContainer } from '../UI/Card.jsx';
 import UserCard from '../entity/user/UserCard';
 import FavouriteButtons from '../entity/favourites/FavouriteButtons.jsx';
+import './Students.scss';
 
 
 function Students() {
@@ -22,14 +26,9 @@ function Students() {
       UserYearName: '2022-23',
     };
 
-    const loggedInUserGroup = 13;
-    const moduleID = 1;
-    const apiURL = "http://softwarehub.uk/unibase/api"
-    const myGroupEndpoint = `${apiURL}/users/modules/${moduleID}`;
-
     const loggedInUser = 277;
-    
-  
+    const apiURL = "http://softwarehub.uk/unibase/api"
+    const myGroupEndpoint = `${apiURL}/users/likes/${loggedInUser}`;
 
     // State ------------------------------------
     const [students, setStudents] = useState(null);
@@ -64,6 +63,9 @@ function Students() {
     // View -------------------------------------
     return (
       <>
+      <Header />
+      <StudentNavbar />
+      <div className='studentPage' >
         <h1>Students in your course</h1>
 
         <CardContainer>
@@ -79,12 +81,12 @@ function Students() {
         ))}
         </CardContainer>
 
-
         <button onClick={() =>
             addToFavourites(student.UserID)}> 
             <span>Add to Favourite</span>
         </button> 
         <button onClick={() => handleAdd(newStudent)}>Add student</button>
+      </div>
       </>
 );
 }
